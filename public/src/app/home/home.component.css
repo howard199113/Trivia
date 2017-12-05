@@ -1,0 +1,10 @@
+#play{
+  border: groove;
+  display: inline-block;
+}
+#playbtn{
+  margin-left: 110px;
+}
+#currentScore{
+  color: red;
+}

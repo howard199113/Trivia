@@ -1,0 +1,6 @@
+<h2>Please enter your name:</h2>
+<form (submit)="onSubmit()" #logRegForm="ngForm">
+  <input type="text" name="name" #name="ngModel" [(ngModel)]='newUser.name' required minlength=4>
+  <p *ngIf="name.invalid && name.dirty">Please enter in at least 4 characters</p>
+  <input type="submit" [disabled]="logRegForm.invalid">
+</form>

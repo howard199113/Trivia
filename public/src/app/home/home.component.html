@@ -1,0 +1,37 @@
+<h2>Hi! {{currentUser.name}}!</h2>
+<div>
+  <a href="home">Home</a>
+  <a [routerLink]="['add']">Add a Question</a>
+  <a href="" (click)="logout()">Logout</a>
+</div>
+
+<div *ngIf="currentScore.score != undefined">
+  <h3 id="currentScore" *ngIf="currentScore.score > 2">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3. Good Job!</h3>
+  <h3 id="currentScore" *ngIf="currentScore.score < 3">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3</h3>
+</div>
+
+
+<div id="play">
+  <a [routerLink]="['play']"><input id="playbtn" type="button" value="Play!"></a>
+  <p>Click the button above to start the trivia game</p>
+</div>
+
+
+<h3>Search:</h3>
+<input type="text" name="searchString" [(ngModel)]="searchString" (keyup)="searchScore()">
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Score</th>
+    <th>Percentage</th>
+  </tr>
+  <tr *ngFor="let score of shownScores">
+    <td>{{score.name}}</td>
+    <td>{{score.score}}/3</td>
+    <td *ngIf="score.score == 0">0%</td>
+    <td *ngIf="score.score == 1">33.3%</td>
+    <td *ngIf="score.score == 2">66.7%</td>
+    <td *ngIf="score.score == 3">100%</td>
+  </tr>
+</table>
