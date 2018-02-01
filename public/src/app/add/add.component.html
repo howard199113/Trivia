@@ -1,11 +1,33 @@
-<h1>New Question</h1>
+<body>
+  <div class="text-center">
+    <img src="http://swierengajewelers.com/wp-content/uploads/2014/10/questions-mark.png" width="70px" height="70px" alt="">
+    <h1>New Question</h1>
+  </div>
+  <div class="container">
+    <div class="form">
+      <form (submit)="onSubmit()" class="form-horizontal">
+        <div class="form-group">
+          <label for="question">Question:</label>
+          <input type="text" class="form-control" name="question" [(ngModel)]="newQuestion.question" #question="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="correct">Correct Answer:</label>
+          <input type="text" class="form-control" name="correct" [(ngModel)]="newQuestion.correct" #correct="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="fake1">Fake Answer 1:</label>
+          <input type="text" class="form-control" name="fake1" [(ngModel)]="newQuestion.fake1" #fake1="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="fake2">Fake Answer 2:</label>
+          <input type="text" class="form-control" name="fake2" [(ngModel)]="newQuestion.fake2" #fake2="ngModel">
+        </div>
+        <div class="buttons">
+          <input class="btn btn-success" type="submit" value="Add Question">
+          <a href="home" style="color: gray">Cancel</a>
+        </div>
+      </form>
+    </div>
 
-<form (submit)="onSubmit()">
-  <p>Question:<input type="text" name="question" [(ngModel)]="newQuestion.question" #question="ngModel"></p>
-  <p>Correct Answer:<input type="text" name="correct" [(ngModel)]="newQuestion.correct" #correct="ngModel"></p>
-  <p>Fake Answer 1:<input type="text"  name="fake1" [(ngModel)]="newQuestion.fake1" #fake1="ngModel"></p>
-  <p>Fake Answer 2:<input type="text"  name="fake2" [(ngModel)]="newQuestion.fake2" #fake2="ngModel"></p>
-  <input type="submit" value="Add Question">
-</form>
-
-<a href="home"><button>Cancel</button></a>
+  </div>
+</body>

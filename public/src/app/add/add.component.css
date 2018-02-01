@@ -1,0 +1,15 @@
+.container{
+  width: 500px;
+}
+a{
+  display: block;
+}
+.buttons{
+  text-align: center;
+}
+h1{
+  display: inline-block;
+}
+img{
+  vertical-align: top;
+}

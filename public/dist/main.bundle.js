@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container{\n  width: 500px;\n}\na{\n  display: block;\n}\n.buttons{\n  text-align: center;\n}\nh1{\n  display: inline-block;\n}\nimg{\n  vertical-align: top;\n}\n", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add/add.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>New Question</h1>\n\n<form (submit)=\"onSubmit()\">\n  <p>Question:<input type=\"text\" name=\"question\" [(ngModel)]=\"newQuestion.question\" #question=\"ngModel\"></p>\n  <p>Correct Answer:<input type=\"text\" name=\"correct\" [(ngModel)]=\"newQuestion.correct\" #correct=\"ngModel\"></p>\n  <p>Fake Answer 1:<input type=\"text\"  name=\"fake1\" [(ngModel)]=\"newQuestion.fake1\" #fake1=\"ngModel\"></p>\n  <p>Fake Answer 2:<input type=\"text\"  name=\"fake2\" [(ngModel)]=\"newQuestion.fake2\" #fake2=\"ngModel\"></p>\n  <input type=\"submit\" value=\"Add Question\">\n</form>\n\n<a href=\"home\"><button>Cancel</button></a>\n"
+module.exports = "<body>\n  <div class=\"text-center\">\n    <img src=\"http://swierengajewelers.com/wp-content/uploads/2014/10/questions-mark.png\" width=\"70px\" height=\"70px\" alt=\"\">\n    <h1>New Question</h1>\n  </div>\n  <div class=\"container\">\n    <div class=\"form\">\n      <form (submit)=\"onSubmit()\" class=\"form-horizontal\">\n        <div class=\"form-group\">\n          <label for=\"question\">Question:</label>\n          <input type=\"text\" class=\"form-control\" name=\"question\" [(ngModel)]=\"newQuestion.question\" #question=\"ngModel\">\n        </div>\n        <div class=\"form-group\">\n          <label for=\"correct\">Correct Answer:</label>\n          <input type=\"text\" class=\"form-control\" name=\"correct\" [(ngModel)]=\"newQuestion.correct\" #correct=\"ngModel\">\n        </div>\n        <div class=\"form-group\">\n          <label for=\"fake1\">Fake Answer 1:</label>\n          <input type=\"text\" class=\"form-control\" name=\"fake1\" [(ngModel)]=\"newQuestion.fake1\" #fake1=\"ngModel\">\n        </div>\n        <div class=\"form-group\">\n          <label for=\"fake2\">Fake Answer 2:</label>\n          <input type=\"text\" class=\"form-control\" name=\"fake2\" [(ngModel)]=\"newQuestion.fake2\" #fake2=\"ngModel\">\n        </div>\n        <div class=\"buttons\">\n          <input class=\"btn btn-success\" type=\"submit\" value=\"Add Question\">\n          <a href=\"home\" style=\"color: gray\">Cancel</a>\n        </div>\n      </form>\n    </div>\n\n  </div>\n</body>\n"
 
 /***/ }),
 
@@ -364,7 +364,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#play{\n  border: groove;\n  display: inline-block;\n}\n#playbtn{\n  margin-left: 110px;\n}\n#currentScore{\n  color: red;\n}\n", ""]);
+exports.push([module.i, "#play{\n  margin-top: 30px;\n  margin-bottom: 30px;\n}\n#currentScore{\n  color: red;\n}\n.container{\n  width: 500px;\n}\n.tableScroll{\n  width: 500px;\n  height: 800px;\n  overflow: scroll;\n}\n.container-fluid{\n  background-color: #17bda6;\n}\n", ""]);
 
 // exports
 
@@ -377,7 +377,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Hi! {{currentUser.name}}!</h2>\n<div>\n  <a href=\"home\">Home</a>\n  <a [routerLink]=\"['add']\">Add a Question</a>\n  <a href=\"\" (click)=\"logout()\">Logout</a>\n</div>\n\n<div *ngIf=\"currentScore.score != undefined\">\n  <h3 id=\"currentScore\" *ngIf=\"currentScore.score > 2\">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3. Good Job!</h3>\n  <h3 id=\"currentScore\" *ngIf=\"currentScore.score < 3\">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3</h3>\n</div>\n\n\n<div id=\"play\">\n  <a [routerLink]=\"['play']\"><input id=\"playbtn\" type=\"button\" value=\"Play!\"></a>\n  <p>Click the button above to start the trivia game</p>\n</div>\n\n\n<h3>Search:</h3>\n<input type=\"text\" name=\"searchString\" [(ngModel)]=\"searchString\" (keyup)=\"searchScore()\">\n\n<table>\n  <tr>\n    <th>Name</th>\n    <th>Score</th>\n    <th>Percentage</th>\n  </tr>\n  <tr *ngFor=\"let score of shownScores\">\n    <td>{{score.name}}</td>\n    <td>{{score.score}}/3</td>\n    <td *ngIf=\"score.score == 0\">0%</td>\n    <td *ngIf=\"score.score == 1\">33.3%</td>\n    <td *ngIf=\"score.score == 2\">66.7%</td>\n    <td *ngIf=\"score.score == 3\">100%</td>\n  </tr>\n</table>\n"
+module.exports = "<div class=\"container-fluid\">\n  <h2>Welcome {{currentUser.name}}~</h2>\n  <div class=\"row text-center\">\n    <a class=\"col-sm-4\" href=\"home\"><h4>Home</h4></a>\n    <a class=\"col-sm-4\" [routerLink]=\"['add']\"><h4>Add Question</h4></a>\n    <a class=\"col-sm-4\" href=\"\" (click)=\"logout()\"><h4>logout</h4></a>\n  </div>\n</div>\n\n<div *ngIf=\"currentScore.score != undefined\">\n  <h3 id=\"currentScore\" *ngIf=\"currentScore.score > 2\">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3. Good Job!</h3>\n  <h3 id=\"currentScore\" *ngIf=\"currentScore.score < 3\">Hey {{currentScore.name}}, your score is {{currentScore.score}}/3</h3>\n</div>\n\n<body class=\"text-center\">\n  <div id=\"play\">\n    <a [routerLink]=\"['play']\"><button type=\"button\" class=\"btn btn-danger btn-lg\">PLAY</button></a>\n    <p style=\"color: #80808078\">*Click the button above to start the trivia game</p>\n  </div>\n  <div class=\"container\">\n    <div class=\"form-inline text-left\">\n      <div class=\"form-group\">\n        <label for=\"searchString\">Search:</label>\n        <input type=\"text\" class=\"form-control\" name=\"searchString\" [(ngModel)]=\"searchString\" (keyup)=\"searchScore()\">\n      </div>\n    </div>\n    <div class=\"tableScroll\">\n      <table class=\"table table-striped\">\n        <thead>\n          <tr>\n            <th class=\"text-center\">Name</th>\n            <th class=\"text-center\">Score</th>\n            <th class=\"text-center\">Percentage</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let score of shownScores\">\n            <td>{{score.name}}</td>\n            <td>{{score.score}}/3</td>\n            <td *ngIf=\"score.score == 0\">0%</td>\n            <td *ngIf=\"score.score == 1\">33.3%</td>\n            <td *ngIf=\"score.score == 2\">66.7%</td>\n            <td *ngIf=\"score.score == 3\">100%</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</body>\n"
 
 /***/ }),
 
@@ -448,7 +448,8 @@ var HomeComponent = (function () {
         console.log("hit searchScore", this.searchString);
         this.shownScores = this.scores.filter(function (score) {
             console.log(score.name.includes(_this.searchString));
-            return score.name.toLowerCase().includes(_this.searchString);
+            console.log(score.score);
+            return score.name.toLowerCase().includes(_this.searchString) || score.score.toString().includes(_this.searchString);
         });
     };
     HomeComponent.prototype.logout = function () {
@@ -485,7 +486,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".login{\n  display: inline-block;\n  width: 27%;\n}\n", ""]);
 
 // exports
 
@@ -498,7 +499,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/logreg/logreg.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Please enter your name:</h2>\n<form (submit)=\"onSubmit()\" #logRegForm=\"ngForm\">\n  <input type=\"text\" name=\"name\" #name=\"ngModel\" [(ngModel)]='newUser.name' required minlength=4>\n  <p *ngIf=\"name.invalid && name.dirty\">Please enter in at least 4 characters</p>\n  <input type=\"submit\" [disabled]=\"logRegForm.invalid\">\n</form>\n"
+module.exports = "<body class=\"text-center\">\n  <div class=\"login\">\n    <img src=\"https://logopond.com/logos/7cbefd1c803c7e9515ea4be59233da29.png\" width=\"180px\" height=\"150px\" alt=\"\">\n    <h2>Please enter your name:</h2>\n    <form (submit)=\"onSubmit()\" #logRegForm=\"ngForm\">\n      <div class=\"form-group\">\n        <input type=\"text\" class=\"form-control\" name=\"name\" #name=\"ngModel\" [(ngModel)]='newUser.name' required minlength=4>\n        <p *ngIf=\"name.invalid && name.dirty\">Please enter in at least 4 characters</p>\n      </div>\n      <input type=\"submit\" class=\"btn btn-success\" [disabled]=\"logRegForm.invalid\" align=\"left\">\n    </form>\n  </div>\n</body>\n"
 
 /***/ }),
 
@@ -566,7 +567,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".choices{\n  display: inline-block;\n}\n", ""]);
+exports.push([module.i, ".choices{\n  display: inline-block;\n}\n.container{\n  width: 700px;\n}\na{\n  color: gray;\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -579,7 +580,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/play/play.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Hi! {{currentUser.name}}!</h2>\n<p>Choose an answer for each of the questions and submit the test once done.</p>\n<p>Good luck!</p>\n<form (submit)=\"onSubmit()\">\n  <div *ngFor=\"let question of allQuestions; let i = index\">\n\n    <fieldset *ngIf=\"i == 0\">\n        <h4>1. {{allQuestions[0].question}}</h4>\n          <div>\n            <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].correct}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\"><p class=\"choices\">{{allQuestions[0].correct}}</p>\n          </div>\n\n          <div>\n            <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].fake1}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\"><p class=\"choices\">{{allQuestions[0].fake1}}</p>\n          </div>\n\n          <div>\n            <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].fake2}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\"><p class=\"choices\">{{allQuestions[0].fake2}}</p>\n          </div>\n    </fieldset>\n\n    <fieldset *ngIf=\"i == 1\">\n        <h4>2. {{allQuestions[1].question}}</h4>\n          <div>\n            <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].correct}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\"><p class=\"choices\">{{allQuestions[1].correct}}</p>\n          </div>\n\n          <div>\n            <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].fake1}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\"><p class=\"choices\">{{allQuestions[1].fake1}}</p>\n          </div>\n\n          <div>\n            <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].fake2}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\"><p class=\"choices\">{{allQuestions[1].fake2}}</p>\n          </div>\n    </fieldset>\n\n    <fieldset *ngIf=\"i == 2\">\n        <h4>3. {{allQuestions[2].question}}</h4>\n          <div>\n            <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].correct}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\"><p class=\"choices\">{{allQuestions[2].correct}}</p>\n          </div>\n\n          <div>\n            <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].fake1}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\"><p class=\"choices\">{{allQuestions[2].fake1}}</p>\n          </div>\n\n          <div>\n            <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].fake2}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\"><p class=\"choices\">{{allQuestions[2].fake2}}</p>\n          </div>\n    </fieldset>\n  </div>\n  <input type=\"submit\" value=\"submit\">\n  <a href=\"home\"><button>Cancel</button></a>\n</form>\n"
+module.exports = "<body>\n  <div class=\"container\">\n    <h4>Choose an answer for each of the questions and submit the test once done. Good luck {{currentUser.name}}!</h4>\n    <form (submit)=\"onSubmit()\" #quizForm=\"ngForm\">\n      <div *ngFor=\"let question of allQuestions; let i = index\">\n\n        <!-- question 1 -->\n        <fieldset *ngIf=\"i == 0\">\n            <h4>1. {{allQuestions[0].question}}</h4>\n              <div>\n                <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].correct}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\" required><p class=\"choices\">{{allQuestions[0].correct}}</p>\n              </div>\n\n              <div>\n                <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].fake1}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\"><p class=\"choices\">{{allQuestions[0].fake1}}</p>\n              </div>\n\n              <div>\n                <input name=\"question0\" type=\"radio\" value=\"{{allQuestions[0].fake2}}\" [(ngModel)]=\"allAnswers.question0\" #question0=\"ngModel\"><p class=\"choices\">{{allQuestions[0].fake2}}</p>\n              </div>\n        </fieldset>\n\n        <!-- question 2 -->\n        <fieldset *ngIf=\"i == 1\">\n            <h4>2. {{allQuestions[1].question}}</h4>\n              <div>\n                <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].correct}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\" required><p class=\"choices\">{{allQuestions[1].correct}}</p>\n              </div>\n\n              <div>\n                <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].fake1}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\"><p class=\"choices\">{{allQuestions[1].fake1}}</p>\n              </div>\n\n              <div>\n                <input name=\"question1\" type=\"radio\" value=\"{{allQuestions[1].fake2}}\" [(ngModel)]=\"allAnswers.question1\" #question1=\"ngModel\"><p class=\"choices\">{{allQuestions[1].fake2}}</p>\n              </div>\n        </fieldset>\n\n        <!-- question 3 -->\n        <fieldset *ngIf=\"i == 2\">\n            <h4>3. {{allQuestions[2].question}}</h4>\n              <div>\n                <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].correct}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\" required><p class=\"choices\">{{allQuestions[2].correct}}</p>\n              </div>\n\n              <div>\n                <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].fake1}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\"><p class=\"choices\">{{allQuestions[2].fake1}}</p>\n              </div>\n\n              <div>\n                <input name=\"question2\" type=\"radio\" value=\"{{allQuestions[2].fake2}}\" [(ngModel)]=\"allAnswers.question2\" #question2=\"ngModel\"><p class=\"choices\">{{allQuestions[2].fake2}}</p>\n              </div>\n        </fieldset>\n\n      </div>\n      <input type=\"submit\" value=\"submit\" [disabled]=\"quizForm.invalid\" class=\"btn btn-success\">\n      <a href=\"home\">Cancel</a>\n    </form>\n  </div>\n</body>\n"
 
 /***/ }),
 

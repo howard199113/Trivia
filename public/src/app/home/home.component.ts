@@ -43,7 +43,9 @@ export class HomeComponent implements OnInit {
     this._userService.getScores()
     .then((data)=>{
       this.scores = data;
+
       this.shownScores = data;
+
       console.log(this.scores);
     })
     .catch((error)=>{
@@ -55,7 +57,8 @@ export class HomeComponent implements OnInit {
     console.log("hit searchScore", this.searchString);
     this.shownScores = this.scores.filter((score)=>{
       console.log(score.name.includes(this.searchString));
-      return score.name.toLowerCase().includes(this.searchString)
+      console.log(score.score)
+      return score.name.toLowerCase().includes(this.searchString) || score.score.toString().includes(this.searchString);
     })
   }
 

@@ -1,54 +1,60 @@
-<h2>Hi! {{currentUser.name}}!</h2>
-<p>Choose an answer for each of the questions and submit the test once done.</p>
-<p>Good luck!</p>
-<form (submit)="onSubmit()">
-  <div *ngFor="let question of allQuestions; let i = index">
+<body>
+  <div class="container">
+    <h4>Choose an answer for each of the questions and submit the test once done. Good luck {{currentUser.name}}!</h4>
+    <form (submit)="onSubmit()" #quizForm="ngForm">
+      <div *ngFor="let question of allQuestions; let i = index">
 
-    <fieldset *ngIf="i == 0">
-        <h4>1. {{allQuestions[0].question}}</h4>
-          <div>
-            <input name="question0" type="radio" value="{{allQuestions[0].correct}}" [(ngModel)]="allAnswers.question0" #question0="ngModel"><p class="choices">{{allQuestions[0].correct}}</p>
-          </div>
+        <!-- question 1 -->
+        <fieldset *ngIf="i == 0">
+            <h4>1. {{allQuestions[0].question}}</h4>
+              <div>
+                <input name="question0" type="radio" value="{{allQuestions[0].correct}}" [(ngModel)]="allAnswers.question0" #question0="ngModel" required><p class="choices">{{allQuestions[0].correct}}</p>
+              </div>
 
-          <div>
-            <input name="question0" type="radio" value="{{allQuestions[0].fake1}}" [(ngModel)]="allAnswers.question0" #question0="ngModel"><p class="choices">{{allQuestions[0].fake1}}</p>
-          </div>
+              <div>
+                <input name="question0" type="radio" value="{{allQuestions[0].fake1}}" [(ngModel)]="allAnswers.question0" #question0="ngModel"><p class="choices">{{allQuestions[0].fake1}}</p>
+              </div>
 
-          <div>
-            <input name="question0" type="radio" value="{{allQuestions[0].fake2}}" [(ngModel)]="allAnswers.question0" #question0="ngModel"><p class="choices">{{allQuestions[0].fake2}}</p>
-          </div>
-    </fieldset>
+              <div>
+                <input name="question0" type="radio" value="{{allQuestions[0].fake2}}" [(ngModel)]="allAnswers.question0" #question0="ngModel"><p class="choices">{{allQuestions[0].fake2}}</p>
+              </div>
+        </fieldset>
 
-    <fieldset *ngIf="i == 1">
-        <h4>2. {{allQuestions[1].question}}</h4>
-          <div>
-            <input name="question1" type="radio" value="{{allQuestions[1].correct}}" [(ngModel)]="allAnswers.question1" #question1="ngModel"><p class="choices">{{allQuestions[1].correct}}</p>
-          </div>
+        <!-- question 2 -->
+        <fieldset *ngIf="i == 1">
+            <h4>2. {{allQuestions[1].question}}</h4>
+              <div>
+                <input name="question1" type="radio" value="{{allQuestions[1].correct}}" [(ngModel)]="allAnswers.question1" #question1="ngModel" required><p class="choices">{{allQuestions[1].correct}}</p>
+              </div>
 
-          <div>
-            <input name="question1" type="radio" value="{{allQuestions[1].fake1}}" [(ngModel)]="allAnswers.question1" #question1="ngModel"><p class="choices">{{allQuestions[1].fake1}}</p>
-          </div>
+              <div>
+                <input name="question1" type="radio" value="{{allQuestions[1].fake1}}" [(ngModel)]="allAnswers.question1" #question1="ngModel"><p class="choices">{{allQuestions[1].fake1}}</p>
+              </div>
 
-          <div>
-            <input name="question1" type="radio" value="{{allQuestions[1].fake2}}" [(ngModel)]="allAnswers.question1" #question1="ngModel"><p class="choices">{{allQuestions[1].fake2}}</p>
-          </div>
-    </fieldset>
+              <div>
+                <input name="question1" type="radio" value="{{allQuestions[1].fake2}}" [(ngModel)]="allAnswers.question1" #question1="ngModel"><p class="choices">{{allQuestions[1].fake2}}</p>
+              </div>
+        </fieldset>
 
-    <fieldset *ngIf="i == 2">
-        <h4>3. {{allQuestions[2].question}}</h4>
-          <div>
-            <input name="question2" type="radio" value="{{allQuestions[2].correct}}" [(ngModel)]="allAnswers.question2" #question2="ngModel"><p class="choices">{{allQuestions[2].correct}}</p>
-          </div>
+        <!-- question 3 -->
+        <fieldset *ngIf="i == 2">
+            <h4>3. {{allQuestions[2].question}}</h4>
+              <div>
+                <input name="question2" type="radio" value="{{allQuestions[2].correct}}" [(ngModel)]="allAnswers.question2" #question2="ngModel" required><p class="choices">{{allQuestions[2].correct}}</p>
+              </div>
 
-          <div>
-            <input name="question2" type="radio" value="{{allQuestions[2].fake1}}" [(ngModel)]="allAnswers.question2" #question2="ngModel"><p class="choices">{{allQuestions[2].fake1}}</p>
-          </div>
+              <div>
+                <input name="question2" type="radio" value="{{allQuestions[2].fake1}}" [(ngModel)]="allAnswers.question2" #question2="ngModel"><p class="choices">{{allQuestions[2].fake1}}</p>
+              </div>
 
-          <div>
-            <input name="question2" type="radio" value="{{allQuestions[2].fake2}}" [(ngModel)]="allAnswers.question2" #question2="ngModel"><p class="choices">{{allQuestions[2].fake2}}</p>
-          </div>
-    </fieldset>
+              <div>
+                <input name="question2" type="radio" value="{{allQuestions[2].fake2}}" [(ngModel)]="allAnswers.question2" #question2="ngModel"><p class="choices">{{allQuestions[2].fake2}}</p>
+              </div>
+        </fieldset>
+
+      </div>
+      <input type="submit" value="submit" [disabled]="quizForm.invalid" class="btn btn-success">
+      <a href="home">Cancel</a>
+    </form>
   </div>
-  <input type="submit" value="submit">
-  <a href="home"><button>Cancel</button></a>
-</form>
+</body>

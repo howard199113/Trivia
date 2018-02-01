@@ -1,6 +1,13 @@
-<h2>Please enter your name:</h2>
-<form (submit)="onSubmit()" #logRegForm="ngForm">
-  <input type="text" name="name" #name="ngModel" [(ngModel)]='newUser.name' required minlength=4>
-  <p *ngIf="name.invalid && name.dirty">Please enter in at least 4 characters</p>
-  <input type="submit" [disabled]="logRegForm.invalid">
-</form>
+<body class="text-center">
+  <div class="login">
+    <img src="https://logopond.com/logos/7cbefd1c803c7e9515ea4be59233da29.png" width="180px" height="150px" alt="">
+    <h2>Please enter your name:</h2>
+    <form (submit)="onSubmit()" #logRegForm="ngForm">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]='newUser.name' required minlength=4>
+        <p *ngIf="name.invalid && name.dirty">Please enter in at least 4 characters</p>
+      </div>
+      <input type="submit" class="btn btn-success" [disabled]="logRegForm.invalid" align="left">
+    </form>
+  </div>
+</body>
